@@ -1,0 +1,21 @@
+services:
+  vrt:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    container_name: vrt
+    ports:
+      - "5173:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+  tests:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    container_name: vrt_test
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: [ "npm", "run", "test" ]
