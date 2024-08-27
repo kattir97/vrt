@@ -1,0 +1,39 @@
+name: PR Verify
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: PR Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: "20"
+
+        # Step 3: Install dependencies
+      - name: Install dependencies
+        uses: npm install
+
+        # Step 4: Build the app
+      - name: Build the app
+        run: npm run build
+
+        # Step 5: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 6: Run the app
+      - name: Run the app
+        run: npm start
