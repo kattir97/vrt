@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: PR Verify
+    name: build and test
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,3 @@ jobs:
         # Step 5: Run tests
       - name: Run tests
         run: npm test
-
-      # Step 6: Run the app
-      - name: Run the app
-        run: npm start
